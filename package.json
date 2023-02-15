@@ -1,6 +1,6 @@
 {
   "name": "@marianmeres/random-human-readable",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Random human readable string generator",
   "type": "module",
   "main": "./dist/index.cjs",
