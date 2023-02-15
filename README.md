@@ -1,10 +1,13 @@
-# @marianmeres/clog
-Simple utility function to help generating random but human readable english words. The
+# @marianmeres/random-human-readable
+
+Simple utility function to help generating random but human readable strings. The
 internal words dictionary has about ~1500 nouns, ~250 adjectives and ~60 colors.
-With default options (one of each and no nonsene syllables suffix and case randomization),
-there should be over 22 million unique choices.
+With default options (one word of each category and no nonsene syllables suffix and case
+randomization), there should be over 22 million unique choices.
 
 Should you worry about collision, either increase the counts and/or randomize case.
+
+DISCLAIMER: All randomness is just about `Math.random`...
 
 ## Installation
 ```shell
@@ -26,7 +29,7 @@ getRandomHumanReadable({
     syllablesCount: 1,
     // if true, will RanDOmiZe case on generated output
     randomizeCase: false,
-	// use false to disable joining and return as array
+    // use false to disable joining and return as array
     // otherwise it will join the generated words with it and return as string
     joinWith: '-'
 });
