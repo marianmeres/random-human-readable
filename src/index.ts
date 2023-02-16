@@ -20,24 +20,29 @@ const times = (n: number, cb: Function) => {
 	while (n-- > 0) cb();
 };
 
-//
+// api
 export const data = { adjs, colors, nouns };
+
 export const getRandomAdj = (): string => getRandomArrayItem(adjs);
+
 export const getRandomColor = (): string => getRandomArrayItem(colors);
+
 export const getRandomNoun = (): string => getRandomArrayItem(nouns);
+
 export const getRandomVowel = (): string => getRandomArrayItem(vowels);
+
 export const getRandomConsonant = (): string => getRandomArrayItem(consonants);
+
 export const getRandomSyllable = (): string =>
 	[getRandomConsonant(), getRandomVowel()].join('');
 
-//
 export const randomizeCase = (str: string): string =>
 	str
 		.split('')
 		.map((c) => (Math.random() >= 0.5 ? c.toLowerCase() : c.toUpperCase()))
 		.join('');
 
-// all in one
+// main api - all in one
 
 interface Options {
 	adjCount: number;
@@ -57,7 +62,9 @@ const defaultOptions = {
 	joinWith: '-',
 };
 
-export const getRandomHumanReadable = (options: Partial<Options> = {}) => {
+export const getRandomHumanReadable = (
+	options: Partial<Options> = {}
+): string | string[] => {
 	const { adjCount, colorsCount, nounsCount, syllablesCount, joinWith } = {
 		...defaultOptions,
 		...(options || {}),
