@@ -34,8 +34,8 @@
   },
   "homepage": "https://github.com/marianmeres/random-human-readable#readme",
   "devDependencies": {
-    "@marianmeres/clog": "^0.3.4",
-    "@marianmeres/release": "^0.0.7",
+    "@marianmeres/clog": "^1.0.0",
+    "@marianmeres/release": "^1.0.0",
     "@marianmeres/test-runner": "^2.0.13",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
