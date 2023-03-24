@@ -2,7 +2,7 @@
 
 Simple utility function to help generating random but human readable
 strings. The internal english words dictionary has about ~1500 nouns, ~250 adjectives
-and ~60 colors, which makes - **with default options** - over 22 million unique choices.
+and ~150 colors, which makes - **with default options** - over 56 million unique choices.
 
 Should you worry about collision, you can grow the count of possible choices by orders
 of magnitude by simply increasing the `adjCount/colorsCount/nounsCount/syllablesCount`
