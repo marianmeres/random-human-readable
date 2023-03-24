@@ -150,5 +150,5 @@ export const colors = [
 	'white',
 	'whitesmoke',
 	'yellow',
-	'yellowgree',
+	'yellowgreen',
 ];
