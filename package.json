@@ -17,7 +17,7 @@
   "scripts": {
     "clean": "rimraf dist/*",
     "prettier": "prettier --write \"{src,tests}/**/*.{js,ts,json}\"",
-    "release": "release",
+    "release": "release -v minor",
     "test": "test-runner",
     "test:watch": "nodemon -q -w dist -w tests -x test-runner --",
     "build": "npm run clean && rollup -c",
