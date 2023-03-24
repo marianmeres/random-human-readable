@@ -73,5 +73,6 @@ getRandomNoun();
 getRandomVowel();
 getRandomConsonant();
 getRandomSyllable();
+getRandomSentence();
 randomizeCase(str);
 ```

@@ -10,6 +10,7 @@ import {
 	getRandomSyllable,
 	randomizeCase,
 	getRandomHumanReadable,
+	getRandomSentence
 } from '../dist/index.js';
 import { data } from '../dist/index.js';
 
@@ -39,6 +40,10 @@ suite.test('main fn works', () => {
 	Object.keys(log).forEach((k) => {
 		assert(k.split('-').length === 3, `Expecting '${k}' to have 3 parts`);
 	});
+});
+
+suite.test('get sentence', () => {
+	assert(getRandomSentence().split(' ').length === 9);
 });
 
 //

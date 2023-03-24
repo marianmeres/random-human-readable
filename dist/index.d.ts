@@ -9,6 +9,7 @@ export declare const getRandomNoun: () => string;
 export declare const getRandomVowel: () => string;
 export declare const getRandomConsonant: () => string;
 export declare const getRandomSyllable: () => string;
+export declare const getRandomSentence: () => string;
 export declare const randomizeCase: (str: string) => string;
 interface Options {
     adjCount: number;

@@ -36,6 +36,19 @@ export const getRandomConsonant = (): string => getRandomArrayItem(consonants);
 export const getRandomSyllable = (): string =>
 	[getRandomConsonant(), getRandomVowel()].join('');
 
+// opinionated DRY helper
+export const getRandomSentence = (): string => {
+	const ucf = (_s: string) => _s[0].toUpperCase() + _s.slice(1); // ucfirst
+	const rhr = (): string =>
+		getRandomHumanReadable({
+			adjCount: 2,
+			colorsCount: 1,
+			nounsCount: 1,
+			joinWith: ' ',
+		}) as string;
+	return [ucf(rhr()), ' and ', rhr(), '.'].join('');
+};
+
 export const randomizeCase = (str: string): string =>
 	str
 		.split('')
