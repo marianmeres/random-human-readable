@@ -102,11 +102,13 @@
 			const $once = (...args) => $on(...args, { once: true });
 		</script>
 		<style>
-			body {
+			main {
+				max-width: 1280px;
+				margin: 0 auto;
 				padding: 2rem;
 			}
 			h1 {
-				font-size: 1.3rem;
+				font-size: 1.5rem;
 			}
 			p.desc {
 				margin-bottom: 2rem;
@@ -181,53 +183,56 @@
 		</style>
 	</head>
 	<body>
-		<h1>
-			<a href="https://github.com/marianmeres/random-human-readable">
-				<code>@marianmeres/random-human-readable</code></a
-			>
-			playground
-		</h1>
+		<main>
+			<h1>
+				<a href="https://github.com/marianmeres/random-human-readable">
+					<code>@marianmeres/random-human-readable</code></a
+				>
+				playground
+			</h1>
 
-		<p class="desc">
-			Simple utility to help generating random but human readable strings. Usefull for
-			creating passwords, tokens or just plain text placeholders. See
-			<a href="https://github.com/marianmeres/random-human-readable">readme</a> for more.
-		</p>
+			<p class="desc">
+				Simple utility to help generating random but human readable strings. Usefull for
+				creating passwords, tokens or just plain text placeholders. See
+				<a href="https://github.com/marianmeres/random-human-readable">readme</a> for
+				more.
+			</p>
 
-		<table>
-			<thead>
-				<tr>
-					<th>adjectives</th>
-					<th>colors</th>
-					<th>nouns</th>
-					<th>syllables</th>
-					<th>randomize case</th>
-				</tr>
-			</thead>
-			<tbody>
-				<!-- prettier-ignore -->
-				<tr>
+			<table>
+				<thead>
+					<tr>
+						<th>adjectives</th>
+						<th>colors</th>
+						<th>nouns</th>
+						<th>syllables</th>
+						<th>randomize case</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- prettier-ignore -->
+					<tr>
 					<td><input type="range" min="0" max="5" value="1" step="1" id="adjCount" /></td>
 					<td><input type="range" min="0" max="5" value="1" step="1" id="colorsCount" /></td>
 					<td><input type="range" min="0" max="5" value="1" step="1" id="nounsCount" /></td>
 					<td><input type="range" min="0" max="5" value="0" step="1" id="syllablesCount" /></td>
 					<td><input type="checkbox" value="1" id="randomizeCase" /></td>
 				</tr>
-			</tbody>
-		</table>
+				</tbody>
+			</table>
 
-		<pre id="params"></pre>
+			<pre id="params"></pre>
 
-		<div id="results">Please wait...</div>
+			<div id="results">Please wait...</div>
 
-		<div class="info">
-			Click on any result to copy it to clipboard. All values are generated and stay in
-			the browser only.
-		</div>
+			<div class="info">
+				Click on any result to copy it to clipboard. All values are generated and stay in
+				the browser only.
+			</div>
 
-		<div style="text-align: center">
-			<button id="refresher">Refresh</button>
-		</div>
+			<div style="text-align: center">
+				<button id="refresher">Refresh</button>
+			</div>
+		</main>
 
 		<script type="module">
 			import { getRandomHumanReadable } from './dist/index.js';
