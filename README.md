@@ -8,6 +8,8 @@ Should you worry about collision, you can grow the count of possible choices by 
 of magnitude by simply increasing the `adjCount/colorsCount/nounsCount/syllablesCount`
 options and/or setting the `randomizeCase` flag.
 
+Playground: https://rhr.meres.sk/
+
 ## Installation
 
 ```shell
