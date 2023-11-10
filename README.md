@@ -19,21 +19,23 @@ $ npm i @marianmeres/random-human-readable
 ## Main usage
 
 ```javascript
+import { getRandomHumanReadable } from '@marianmeres/random-human-readable';
+
 // all options are optional, and the generation order is always:
 // 1. adjectives, 2. colors, 3. nouns, 4. syllables
 getRandomHumanReadable({
-	// number of adjectives english words to generate
+	// number of adjectives to generate
 	adjCount: 1,
-	// number of color english words to generate
+	// number of colors to generate
 	colorsCount: 1,
-	// number of noun english words to generate
+	// number of nouns to generate
 	nounsCount: 2,
-	// number of nonsense syllables to generate
+	// number of (nonsense) syllables to generate
 	syllablesCount: 0,
 	// if true, will RanDOmiZe case on generated output
 	randomizeCase: false,
-	// use false to disable joining and return as array
-	// otherwise it will join the generated words with it and return as string
+	// string to join the generated words with
+	// (use explicit `false` to disable joining and return as array of words)
 	joinWith: '-',
 });
 ```
@@ -60,6 +62,7 @@ getRandomHumanReadable({
 	adjCount: 5,
 	syllablesCount: 4,
 	randomizeCase: true,
+	// other options will be inherited from the defaults if not provided
 });
 ```
 
