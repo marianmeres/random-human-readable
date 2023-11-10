@@ -123,22 +123,20 @@
 				text-align: center;
 			}
 			th {
-				padding: 1rem;
+				padding: 1rem 0.5rem 0.5rem 0.5rem;
 			}
 			td {
-				padding: 0 1rem;
+				padding: 0 1rem 1rem 1rem;
+			}
+			td span {
+				display: block;
+				opacity: 0.5;
+				margin-bottom: 0.5rem;
+				font-family: var(--bs-font-monospace);
 			}
 			td input {
-				display: inline-block;
+				display: block;
 				width: 100%;
-			}
-			#params {
-				background-color: rgba(0, 0, 0, 0.1);
-				font-size: 0.7rem;
-				padding: 1rem;
-				margin-bottom: 0;
-				color: rgba(0, 0, 0, 0.5);
-				text-align: center;
 			}
 			#results {
 				background-color: rgba(0, 0, 0, 0.05);
@@ -169,6 +167,12 @@
 				color: rgba(0, 0, 0, 0.3);
 				font-size: 0.8rem;
 				margin-bottom: 1rem;
+			}
+			.info a {
+				color: rgba(0, 0, 0, 0.3);
+			}
+			.info a:hover {
+				color: rgba(0, 0, 0, 0.7);
 			}
 			#refresher {
 				background-color: rgba(0, 0, 0, 0.05);
@@ -211,22 +215,20 @@
 				<tbody>
 					<!-- prettier-ignore -->
 					<tr>
-					<td><input type="range" min="0" max="5" value="1" step="1" id="adjCount" /></td>
-					<td><input type="range" min="0" max="5" value="1" step="1" id="colorsCount" /></td>
-					<td><input type="range" min="0" max="5" value="1" step="1" id="nounsCount" /></td>
-					<td><input type="range" min="0" max="5" value="0" step="1" id="syllablesCount" /></td>
-					<td><input type="checkbox" value="1" id="randomizeCase" /></td>
-				</tr>
+						<td><span></span><input type="range" min="0" max="5" value="1" step="1" id="adjCount" /></td>
+						<td><span></span><input type="range" min="0" max="5" value="1" step="1" id="colorsCount" /></td>
+						<td><span></span><input type="range" min="0" max="5" value="2" step="1" id="nounsCount" /></td>
+						<td><span></span><input type="range" min="0" max="5" value="0" step="1" id="syllablesCount" /></td>
+						<td><span></span><input type="checkbox" value="1" id="randomizeCase" /></td>
+					</tr>
 				</tbody>
 			</table>
-
-			<pre id="params"></pre>
 
 			<div id="results">Please wait...</div>
 
 			<div class="info">
 				Click on any result to copy it to clipboard. All values are generated and stay in
-				the browser only.
+				the browser only. Author <a href="mailto:marian@meres.sk">marian@meres.sk</a>.
 			</div>
 
 			<div style="text-align: center">
@@ -244,17 +246,16 @@
 				syllablesCount: qs('#syllablesCount'),
 				randomizeCase: qs('#randomizeCase'),
 			};
-			const $params = qs('#params');
 			const $results = qs('#results');
 
 			const render = () => {
-				const opts = Object.entries($inputs).reduce(
-					(m, [k, v]) => ({ ...m, [k]: parseInt(v.value) }),
-					{}
-				);
-				opts.randomizeCase = !!$inputs.randomizeCase.checked;
+				let opts = {};
+				Object.entries($inputs).forEach(([k, v]) => {
+					opts[k] = k === 'randomizeCase' ? v.checked : parseInt(v.value);
+					qs('span', v.parentNode).innerHTML = opts[k];
+				});
 
-				$params.innerHTML = 'getRandomHumanReadable(' + JSON.stringify(opts) + ')';
+				console.log(opts);
 
 				let resultsHtml = '';
 				let i = 10;

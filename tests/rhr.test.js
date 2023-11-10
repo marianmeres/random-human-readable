@@ -10,7 +10,7 @@ import {
 	getRandomSyllable,
 	randomizeCase,
 	getRandomHumanReadable,
-	getRandomSentence
+	getRandomSentence,
 } from '../dist/index.js';
 import { data } from '../dist/index.js';
 
@@ -38,7 +38,7 @@ suite.test('main fn works', () => {
 	times(100, () => (log[getRandomHumanReadable()] = true));
 	assert(Object.keys(log).length === 100);
 	Object.keys(log).forEach((k) => {
-		assert(k.split('-').length === 3, `Expecting '${k}' to have 3 parts`);
+		assert(k.split('-').length === 4, `Expecting '${k}' to have 4 parts`);
 	});
 });
 

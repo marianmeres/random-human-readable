@@ -2,7 +2,7 @@
 
 Simple utility function to help generating random but human readable
 strings. The internal english words dictionary has about ~1500 nouns, ~250 adjectives
-and ~150 colors, which makes - **with default options** - over 56 million unique choices.
+and ~150 colors, which makes - **with default options** - over 84 billion unique choices.
 
 Should you worry about collision, you can grow the count of possible choices by orders
 of magnitude by simply increasing the `adjCount/colorsCount/nounsCount/syllablesCount`
@@ -27,7 +27,7 @@ getRandomHumanReadable({
 	// number of color english words to generate
 	colorsCount: 1,
 	// number of noun english words to generate
-	nounsCount: 1,
+	nounsCount: 2,
 	// number of nonsense syllables to generate
 	syllablesCount: 0,
 	// if true, will RanDOmiZe case on generated output
@@ -41,16 +41,16 @@ getRandomHumanReadable({
 Example results (with default options):
 
 ```
-clean-pink-garbage
-quick-orchid-nobody
-rhythmic-peru-river
-dry-teal-trouble
-shrilling-turquoise-choice
-faint-ivory-square
-nutty-icy-knowledge
-young-slategray-long
-immense-snow-make
-round-aqua-bedroom
+fit-transparent-mouse-phrase
+massive-navy-wood-joint
+unkempt-cadetblue-hand-branch
+incalculable-brown-quality-tank
+chubby-aquamarine-year-flower
+wooden-springgreen-profit-personal
+prickly-darkblue-incident-schedule
+refined-palegoldenrod-reason-policy
+wide-white-contract-transition
+whispering-burlywood-ring-pizza
 ```
 
 or, if you're feeling options-adventurous:

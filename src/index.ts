@@ -69,7 +69,7 @@ interface Options {
 const defaultOptions = {
 	adjCount: 1,
 	colorsCount: 1,
-	nounsCount: 1,
+	nounsCount: 2,
 	syllablesCount: 0,
 	randomizeCase: false,
 	joinWith: '-',
