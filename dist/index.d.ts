@@ -9,6 +9,8 @@ export declare const getRandomNoun: () => string;
 export declare const getRandomVowel: () => string;
 export declare const getRandomConsonant: () => string;
 export declare const getRandomSyllable: () => string;
+export declare const getRandomDigit: () => string;
+export declare const getRandomSpecialChar: () => string;
 export declare const getRandomSentence: () => string;
 export declare const randomizeCase: (str: string) => string;
 interface Options {
@@ -17,6 +19,8 @@ interface Options {
     nounsCount: number;
     syllablesCount: number;
     randomizeCase: boolean;
+    digitsCount: number;
+    specialCharsCount: number;
     joinWith: string | false;
 }
 export declare const getRandomHumanReadable: (options?: Partial<Options>) => string | string[];

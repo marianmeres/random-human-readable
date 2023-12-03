@@ -100,6 +100,15 @@
 			// target, selector, type, handler
 			// positivelly expecting correct args number
 			const $once = (...args) => $on(...args, { once: true });
+
+			//
+			const escapeHtml = (str) =>
+				str
+					.replaceAll('&', '&amp;')
+					.replaceAll('<', '&lt;')
+					.replaceAll('>', '&gt;')
+					.replaceAll('"', '&quot;')
+					.replaceAll("'", '&#039;');
 		</script>
 		<style>
 			main {
@@ -184,6 +193,16 @@
 			#refresher:hover {
 				color: rgba(0, 0, 0, 1);
 			}
+			.secondary {
+				opacity: 0.8;
+				font-weight: normal;
+				font-size: smaller;
+				background-color: darkgray;
+			}
+			input[type='range'],
+			input[type='checkbox'] {
+				cursor: pointer;
+			}
 		</style>
 	</head>
 	<body>
@@ -208,8 +227,10 @@
 						<th>adjectives</th>
 						<th>colors</th>
 						<th>nouns</th>
-						<th>syllables</th>
-						<th>randomize case</th>
+						<th class="secondary">syllables</th>
+						<th class="secondary">digits</th>
+						<th class="secondary">special chars</th>
+						<th>mixed case</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -218,7 +239,9 @@
 						<td><span></span><input type="range" min="0" max="5" value="1" step="1" id="adjCount" /></td>
 						<td><span></span><input type="range" min="0" max="5" value="1" step="1" id="colorsCount" /></td>
 						<td><span></span><input type="range" min="0" max="5" value="2" step="1" id="nounsCount" /></td>
-						<td><span></span><input type="range" min="0" max="5" value="0" step="1" id="syllablesCount" /></td>
+						<td class="secondary"><span></span><input type="range" min="0" max="10" value="0" step="1" id="syllablesCount" /></td>
+						<td class="secondary"><span></span><input type="range" min="0" max="10" value="0" step="1" id="digitsCount" /></td>
+						<td class="secondary"><span></span><input type="range" min="0" max="10" value="0" step="1" id="specialCharsCount" /></td>
 						<td><span></span><input type="checkbox" value="1" id="randomizeCase" /></td>
 					</tr>
 				</tbody>
@@ -244,6 +267,8 @@
 				colorsCount: qs('#colorsCount'),
 				nounsCount: qs('#nounsCount'),
 				syllablesCount: qs('#syllablesCount'),
+				digitsCount: qs('#digitsCount'),
+				specialCharsCount: qs('#specialCharsCount'),
 				randomizeCase: qs('#randomizeCase'),
 			};
 			const $results = qs('#results');
@@ -260,12 +285,12 @@
 				let resultsHtml = '';
 				let i = 10;
 				while (i-- > 0) {
-					resultsHtml += `<code>${getRandomHumanReadable(opts)}</code>`;
+					resultsHtml += `<code>${escapeHtml(getRandomHumanReadable(opts))}</code>`;
 				}
 				$results.innerHTML = resultsHtml;
 			};
 
-			Object.values($inputs).forEach(($el) => $el.addEventListener('change', render));
+			Object.values($inputs).forEach(($el) => $el.addEventListener('input', render));
 			qs('#refresher').addEventListener('click', render);
 
 			let _cleanupTimer = null;

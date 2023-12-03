@@ -23,6 +23,17 @@ const times = (n, cb) => {
 	while (n-- > 0) cb();
 };
 
+const none = {
+	adjCount: 0,
+	colorsCount: 0,
+	nounsCount: 0,
+	syllablesCount: 0,
+	digitsCount: 0,
+	specialCharsCount: 0,
+	randomizeCase: false,
+	joinWith: '',
+};
+
 suite.test('sanity check', () => {
 	assert(data.adjs.includes(getRandomAdj()));
 	assert(data.colors.includes(getRandomColor()));
@@ -44,6 +55,14 @@ suite.test('main fn works', () => {
 
 suite.test('get sentence', () => {
 	assert(getRandomSentence().split(' ').length === 9);
+});
+
+suite.test('digits', () => {
+	assert(/^\d{3}$/.test(getRandomHumanReadable({ ...none, digitsCount: 3 })));
+});
+
+suite.test('special chars', () => {
+	assert(/^[\W]{500}$/.test(getRandomHumanReadable({ ...none, specialCharsCount: 500 })));
 });
 
 //

@@ -2,7 +2,7 @@
 
 Simple utility function to help generating random but human readable
 strings. The internal english words dictionary has about ~1500 nouns, ~250 adjectives
-and ~150 colors, which makes - **with default options** - over 84 billion unique choices.
+and ~130 colors, which makes - **with default options** - over 48 billion unique choices.
 
 Should you worry about collision, you can grow the count of possible choices by orders
 of magnitude by simply increasing the `adjCount/colorsCount/nounsCount/syllablesCount`
@@ -22,7 +22,7 @@ $ npm i @marianmeres/random-human-readable
 import { getRandomHumanReadable } from '@marianmeres/random-human-readable';
 
 // all options are optional, and the generation order is always:
-// 1. adjectives, 2. colors, 3. nouns, 4. syllables
+// 1. adjectives, 2. colors, 3. nouns, 4. syllables, (5. digits, 6. special chars)
 getRandomHumanReadable({
 	// number of adjectives to generate
 	adjCount: 1,
@@ -37,6 +37,12 @@ getRandomHumanReadable({
 	// string to join the generated words with
 	// (use explicit `false` to disable joining and return as array of words)
 	joinWith: '-',
+
+	// since many password validators require digits and/or special chars (and this tool
+	// can be used as a password generator), these are also supported, although they
+	// are not really in this context human readable
+	digitsCount: number;
+	specialCharsCount: number;
 });
 ```
 

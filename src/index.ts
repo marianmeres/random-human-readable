@@ -4,6 +4,10 @@ import { colors } from './colors.js';
 
 const vowels = 'aeiouy'.split('');
 const consonants = 'bcdfghjklmnpqrstvwxz'.split('');
+const digits = '0123456789'.split('');
+
+// not including underscore "_" here, so it safely matches \W (not word char) class
+const specialChars = '\\"\'!#$%&()*+,-./:;<=>?@[]^`{|}~'.split('');
 
 // helpers
 const getRandomInt = (min: number, exclusiveMax: number) => {
@@ -36,6 +40,10 @@ export const getRandomConsonant = (): string => getRandomArrayItem(consonants);
 export const getRandomSyllable = (): string =>
 	[getRandomConsonant(), getRandomVowel()].join('');
 
+export const getRandomDigit = (): string => getRandomArrayItem(digits);
+
+export const getRandomSpecialChar = (): string => getRandomArrayItem(specialChars);
+
 // opinionated DRY helper
 export const getRandomSentence = (): string => {
 	const ucf = (_s: string) => _s[0].toUpperCase() + _s.slice(1); // ucfirst
@@ -63,6 +71,8 @@ interface Options {
 	nounsCount: number;
 	syllablesCount: number;
 	randomizeCase: boolean;
+	digitsCount: number;
+	specialCharsCount: number;
 	joinWith: string | false;
 }
 
@@ -71,6 +81,8 @@ const defaultOptions = {
 	colorsCount: 1,
 	nounsCount: 2,
 	syllablesCount: 0,
+	digitsCount: 0,
+	specialCharsCount: 0,
 	randomizeCase: false,
 	joinWith: '-',
 };
@@ -78,20 +90,45 @@ const defaultOptions = {
 export const getRandomHumanReadable = (
 	options: Partial<Options> = {}
 ): string | string[] => {
-	const { adjCount, colorsCount, nounsCount, syllablesCount, joinWith } = {
+	const {
+		adjCount,
+		colorsCount,
+		nounsCount,
+		syllablesCount,
+		digitsCount: numbersCount,
+		specialCharsCount,
+		joinWith,
+	} = {
 		...defaultOptions,
 		...(options || {}),
 	};
+
 	let out: string[] = [];
 
 	adjCount && times(adjCount, () => out.push(getRandomAdj()));
+
 	colorsCount && times(colorsCount, () => out.push(getRandomColor()));
+
 	nounsCount && times(nounsCount, () => out.push(getRandomNoun()));
+
 	if (syllablesCount) {
 		const syls: string[] = [];
 		times(syllablesCount, () => syls.push(getRandomSyllable()));
 		out.push(syls.join(''));
 	}
+
+	if (numbersCount) {
+		const s: string[] = [];
+		times(numbersCount, () => s.push(getRandomDigit()));
+		out.push(s.join(''));
+	}
+
+	if (specialCharsCount) {
+		const s: string[] = [];
+		times(specialCharsCount, () => s.push(getRandomSpecialChar()));
+		out.push(s.join(''));
+	}
+
 	options.randomizeCase && (out = out.map(randomizeCase));
 
 	return joinWith !== false ? out.join(joinWith) : out;
