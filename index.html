@@ -252,6 +252,7 @@
 			<div class="info">
 				Click on any result to copy it to clipboard. All values are generated and stay in
 				the browser only. Author <a href="mailto:marian@meres.sk">marian@meres.sk</a>.
+				<span id="version"></span>
 			</div>
 
 			<div style="text-align: center">
@@ -318,6 +319,16 @@
 			});
 
 			render();
+
+			// fetch current version
+			(async () => {
+				try {
+					const { version } = await (await fetch('./package.json')).json();
+					qs('#version').innerHTML = `Version ${version}.`;
+				} catch (e) {
+					console.error = 'Unable to fetch version';
+				}
+			})();
 		</script>
 
 		<!-- Google tag (gtag.js) -->
