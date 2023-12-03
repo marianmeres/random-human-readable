@@ -40,9 +40,9 @@ getRandomHumanReadable({
 
 	// since many password validators require digits and/or special chars (and this tool
 	// can be used as a password generator), these are also supported, although they
-	// are not really in this context human readable
-	digitsCount: number;
-	specialCharsCount: number;
+	// are not really human readable (in this context)
+	digitsCount: number,
+	specialCharsCount: number,
 });
 ```
 
@@ -56,7 +56,7 @@ incalculable-brown-quality-tank
 chubby-aquamarine-year-flower
 wooden-springgreen-profit-personal
 prickly-darkblue-incident-schedule
-refined-palegoldenrod-reason-policy
+refined-blue-reason-policy
 wide-white-contract-transition
 whispering-burlywood-ring-pizza
 ```
