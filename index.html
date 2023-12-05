@@ -330,7 +330,7 @@
 					const { version } = await (await fetch('./package.json')).json();
 					qs('#version').innerHTML = `Version ${version}.`;
 				} catch (e) {
-					console.error = 'Unable to fetch version';
+					console.error('Unable to fetch version');
 				}
 			})();
 		</script>
