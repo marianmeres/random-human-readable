@@ -46,12 +46,12 @@ export const getRandomSpecialChar = (): string => getRandomArrayItem(specialChar
 
 // opinionated DRY helper
 export const getRandomSentence = (): string => {
-	const ucf = (_s: string) => _s[0].toUpperCase() + _s.slice(1); // ucfirst
+	const ucf = (s: string) => s[0].toUpperCase() + s.slice(1); // ucfirst
 	const rhr = (): string =>
 		getRandomHumanReadable({
-			adjCount: 2,
+			adjCount: 1,
 			colorsCount: 1,
-			nounsCount: 1,
+			nounsCount: 2,
 			joinWith: ' ',
 		}) as string;
 	return [ucf(rhr()), ' and ', rhr(), '.'].join('');
