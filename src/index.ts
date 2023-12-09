@@ -144,7 +144,7 @@ export const getRandomSentence = (
 	//
 	return Math.random() < shorterSentenceProbability * 1
 		? ucf(rhr() + '.')
-		: [ucf(rhr()), ' and ', rhr(), '.'].join('');
+		: [ucf(rhr()), getRandomArrayItem([' and ', ' or ']), rhr(), '.'].join('');
 };
 
 export const getRandomParagraph = (
