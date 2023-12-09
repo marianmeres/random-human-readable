@@ -90,6 +90,9 @@ getRandomNoun();
 getRandomVowel();
 getRandomConsonant();
 getRandomSyllable();
-getRandomSentence();
 randomizeCase(str);
+
+// somewhat off topic and quite opinionated "lorem ipsum like" helpers
+getRandomSentence(options: Partial<Options>[] = [], shorterSentenceProbability = 0.33);
+getRandomParagraph(minSentences = 1, maxSentences = 5, shorterSentenceProbability = 0.33);
 ```

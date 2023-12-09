@@ -44,19 +44,6 @@ export const getRandomDigit = (): string => getRandomArrayItem(digits);
 
 export const getRandomSpecialChar = (): string => getRandomArrayItem(specialChars);
 
-// opinionated DRY helper
-export const getRandomSentence = (): string => {
-	const ucf = (s: string) => s[0].toUpperCase() + s.slice(1); // ucfirst
-	const rhr = (): string =>
-		getRandomHumanReadable({
-			adjCount: 1,
-			colorsCount: 1,
-			nounsCount: 2,
-			joinWith: ' ',
-		}) as string;
-	return [ucf(rhr()), ' and ', rhr(), '.'].join('');
-};
-
 export const randomizeCase = (str: string): string =>
 	str
 		.split('')
@@ -132,4 +119,43 @@ export const getRandomHumanReadable = (
 	options.randomizeCase && (out = out.map(randomizeCase));
 
 	return joinWith !== false ? out.join(joinWith) : out;
+};
+
+// opinionated DRY helper
+export const getRandomSentence = (
+	rhrOptions: Partial<Options>[] = [],
+	shorterSentenceProbability = 0.33
+): string => {
+	rhrOptions ||= [];
+	if (!rhrOptions.length) {
+		rhrOptions = [
+			{ adjCount: 1, colorsCount: 1, nounsCount: 2 },
+			{ adjCount: 2, colorsCount: 0, nounsCount: 2 },
+			{ adjCount: 1, colorsCount: 0, nounsCount: 1 },
+		];
+	}
+	const ucf = (s: string) => s[0].toUpperCase() + s.slice(1); // ucfirst
+	const rhr = (): string =>
+		getRandomHumanReadable({
+			...getRandomArrayItem(rhrOptions),
+			joinWith: ' ',
+		}) as string;
+
+	//
+	return Math.random() < shorterSentenceProbability * 1
+		? ucf(rhr() + '.')
+		: [ucf(rhr()), ' and ', rhr(), '.'].join('');
+};
+
+export const getRandomParagraph = (
+	minSentences = 1,
+	maxSentences = 5,
+	shorterSentenceProbability = 0.33
+): string => {
+	let out: string[] = [];
+	const min = Math.abs(minSentences);
+	const max = Math.abs(maxSentences);
+	const n = getRandomInt(Math.min(min, max), Math.max(min, max));
+	times(n, () => out.push(getRandomSentence([], shorterSentenceProbability * 1)));
+	return out.join(' ');
 };

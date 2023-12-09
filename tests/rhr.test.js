@@ -11,6 +11,7 @@ import {
 	randomizeCase,
 	getRandomHumanReadable,
 	getRandomSentence,
+	getRandomParagraph,
 } from '../dist/index.js';
 import { data } from '../dist/index.js';
 
@@ -54,7 +55,7 @@ suite.test('main fn works', () => {
 });
 
 suite.test('get sentence', () => {
-	assert(getRandomSentence().split(' ').length === 9);
+	assert(typeof getRandomSentence() === 'string'); // hm...
 });
 
 suite.test('digits', () => {
@@ -63,6 +64,10 @@ suite.test('digits', () => {
 
 suite.test('special chars', () => {
 	assert(/^[\W]{500}$/.test(getRandomHumanReadable({ ...none, specialCharsCount: 500 })));
+});
+
+suite.test('random paragraph', () => {
+	assert(typeof getRandomParagraph() === 'string'); // hm...
 });
 
 //

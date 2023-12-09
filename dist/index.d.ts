@@ -11,7 +11,6 @@ export declare const getRandomConsonant: () => string;
 export declare const getRandomSyllable: () => string;
 export declare const getRandomDigit: () => string;
 export declare const getRandomSpecialChar: () => string;
-export declare const getRandomSentence: () => string;
 export declare const randomizeCase: (str: string) => string;
 interface Options {
     adjCount: number;
@@ -24,4 +23,6 @@ interface Options {
     joinWith: string | false;
 }
 export declare const getRandomHumanReadable: (options?: Partial<Options>) => string | string[];
+export declare const getRandomSentence: (rhrOptions?: Partial<Options>[], shorterSentenceProbability?: number) => string;
+export declare const getRandomParagraph: (minSentences?: number, maxSentences?: number, shorterSentenceProbability?: number) => string;
 export {};
