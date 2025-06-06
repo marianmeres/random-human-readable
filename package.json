@@ -1,51 +1,51 @@
 {
-  "name": "@marianmeres/random-human-readable",
-  "version": "1.6.1",
-  "description": "Random human readable string generator",
-  "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "browser": "./dist/index.umd.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    "require": "./dist/index.cjs",
-    "import": "./dist/index.js"
-  },
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "clean": "rimraf dist/*",
-    "prettier": "prettier --write \"{src,tests}/**/*.{js,ts,json}\"",
-    "release": "release -v minor",
-    "test": "test-runner",
-    "test:watch": "nodemon -q -w dist -w tests -x test-runner --",
-    "build": "npm run clean && rollup -c",
-    "dev": "npm run clean && rollup -c -w"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/marianmeres/random-human-readable.git"
-  },
-  "author": "Marian Meres <marian@meres.sk>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/marianmeres/random-human-readable/issues"
-  },
-  "homepage": "https://github.com/marianmeres/random-human-readable#readme",
-  "devDependencies": {
-    "@marianmeres/clog": "^1.0.0",
-    "@marianmeres/release": "^1.0.0",
-    "@marianmeres/test-runner": "^2.0.13",
-    "@rollup/plugin-commonjs": "^24.0.1",
-    "@rollup/plugin-node-resolve": "^15.0.1",
-    "@rollup/plugin-terser": "^0.4.0",
-    "@rollup/plugin-typescript": "^11.0.0",
-    "@types/node": "^18.13.0",
-    "nodemon": "^3.0.1",
-    "prettier": "^2.8.4",
-    "rimraf": "^4.1.2",
-    "rollup": "^3.15.0",
-    "tslib": "^2.5.0"
-  }
+	"name": "@marianmeres/random-human-readable",
+	"version": "1.7.0",
+	"description": "Random human readable string generator",
+	"type": "module",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
+	"browser": "./dist/index.umd.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		"require": "./dist/index.cjs",
+		"import": "./dist/index.js"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"clean": "rimraf dist/*",
+		"prettier": "prettier --write \"{src,tests}/**/*.{js,ts,json}\"",
+		"release": "release -v minor",
+		"test": "test-runner",
+		"test:watch": "nodemon -q -w dist -w tests -x test-runner --",
+		"build": "npm run clean && rollup -c",
+		"dev": "npm run clean && rollup -c -w"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/marianmeres/random-human-readable.git"
+	},
+	"author": "Marian Meres <marian@meres.sk>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/marianmeres/random-human-readable/issues"
+	},
+	"homepage": "https://github.com/marianmeres/random-human-readable#readme",
+	"devDependencies": {
+		"@marianmeres/clog": "^1.0.0",
+		"@marianmeres/release": "^1.0.0",
+		"@marianmeres/test-runner": "^2.0.13",
+		"@rollup/plugin-commonjs": "^24.0.1",
+		"@rollup/plugin-node-resolve": "^15.0.1",
+		"@rollup/plugin-terser": "^0.4.0",
+		"@rollup/plugin-typescript": "^11.0.0",
+		"@types/node": "^18.13.0",
+		"nodemon": "^3.0.1",
+		"prettier": "^2.8.4",
+		"rimraf": "^4.1.2",
+		"rollup": "^3.15.0",
+		"tslib": "^2.5.0"
+	}
 }
