@@ -3,4 +3,5 @@ node_modules/
 .DS_Store
 .npm-dist
 tmp/*
+playground/dist/
 
