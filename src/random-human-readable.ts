@@ -25,26 +25,36 @@ const times = (n: number, cb: Function) => {
 	while (n-- > 0) cb();
 };
 
-// api
+/** Raw word lists used by the generators. */
 export const data = { adjs, colors, nouns };
 
+/** Returns a random adjective. */
 export const getRandomAdj = (): string => getRandomArrayItem(adjs);
 
+/** Returns a random CSS color name. */
 export const getRandomColor = (): string => getRandomArrayItem(colors);
 
+/** Returns a random noun. */
 export const getRandomNoun = (): string => getRandomArrayItem(nouns);
 
+/** Returns a random vowel. */
 export const getRandomVowel = (): string => getRandomArrayItem(vowels);
 
+/** Returns a random consonant. */
 export const getRandomConsonant = (): string => getRandomArrayItem(consonants);
 
+/** Returns a random CV (consonant + vowel) syllable. */
 export const getRandomSyllable = (): string =>
 	[getRandomConsonant(), getRandomVowel()].join("");
 
+/** Returns a random digit character ("0" through "9"). */
 export const getRandomDigit = (): string => getRandomArrayItem(digits);
 
-export const getRandomSpecialChar = (): string => getRandomArrayItem(specialChars);
+/** Returns a random special character (excluding underscore). */
+export const getRandomSpecialChar = (): string =>
+	getRandomArrayItem(specialChars);
 
+/** Randomly upper- or lowercases each character in the string. */
 export const randomizeCase = (str: string): string =>
 	str
 		.split("")
@@ -75,6 +85,11 @@ const defaultOptions = {
 	joinWith: "-",
 };
 
+/**
+ * Generates a random human-readable string by combining adjectives, colors,
+ * nouns, syllables, digits, and special characters.
+ * Returns a joined string by default, or an array of parts when `joinWith` is `false`.
+ */
 export const getRandomHumanReadable = (
 	options: Partial<Options> = {},
 ): string | string[] => {
@@ -122,7 +137,7 @@ export const getRandomHumanReadable = (
 	return joinWith !== false ? out.join(joinWith) : out;
 };
 
-// opinionated DRY helper
+/** Generates a random sentence using human-readable word combinations. */
 export const getRandomSentence = (
 	rhrOptions: Partial<Options>[] = [],
 	shorterSentenceProbability = 0.33,
@@ -149,6 +164,7 @@ export const getRandomSentence = (
 			.join("");
 };
 
+/** Generates a random paragraph of sentences (lorem ipsum alternative). */
 export const getRandomParagraph = (
 	minSentences = 1,
 	maxSentences = 5,
