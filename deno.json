@@ -10,7 +10,9 @@
 		"release": "deno run -A jsr:@marianmeres/deno-release",
 		"publish": "deno publish && deno task npm:publish",
 		"rp": "deno task release -y && deno task publish",
-		"rpm": "deno task release minor -y && deno task publish"
+		"rpm": "deno task release minor -y && deno task publish",
+		"playground:build": "deno run -A jsr:@marianmeres/deno-build --outdir playground/dist",
+		"playground:dev": "deno run -A jsr:@marianmeres/deno-build --outdir playground/dist --watch"
 	},
 	"imports": {
 		"@marianmeres/npmbuild": "jsr:@marianmeres/npmbuild@^1.11.0",
