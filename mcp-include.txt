@@ -1,0 +1,1 @@
+Generates random human-readable strings from combinable word dictionaries (~1500 nouns, ~250 adjectives, ~130 colors) with configurable adjective/color/noun/syllable counts, separators, casing, and optional digits or special chars.
