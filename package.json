@@ -34,18 +34,18 @@
 	},
 	"homepage": "https://github.com/marianmeres/random-human-readable#readme",
 	"devDependencies": {
-		"@marianmeres/clog": "^1.0.0",
-		"@marianmeres/release": "^1.0.0",
-		"@marianmeres/test-runner": "^2.0.13",
-		"@rollup/plugin-commonjs": "^24.0.1",
-		"@rollup/plugin-node-resolve": "^15.0.1",
-		"@rollup/plugin-terser": "^0.4.0",
-		"@rollup/plugin-typescript": "^11.0.0",
-		"@types/node": "^18.13.0",
-		"nodemon": "^3.0.1",
-		"prettier": "^2.8.4",
-		"rimraf": "^4.1.2",
-		"rollup": "^3.15.0",
-		"tslib": "^2.5.0"
+		"@marianmeres/clog": "^1.1.0",
+		"@marianmeres/release": "^1.1.2",
+		"@marianmeres/test-runner": "^2.1.0",
+		"@rollup/plugin-commonjs": "^24.1.0",
+		"@rollup/plugin-node-resolve": "^15.3.1",
+		"@rollup/plugin-terser": "^0.4.4",
+		"@rollup/plugin-typescript": "^11.1.6",
+		"@types/node": "^18.19.130",
+		"nodemon": "^3.1.14",
+		"prettier": "^2.8.8",
+		"rimraf": "^4.4.1",
+		"rollup": "^3.30.0",
+		"tslib": "^2.8.1"
 	}
 }
