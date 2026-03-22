@@ -1,6 +1,9 @@
 import { z } from "npm:zod";
 import type { McpToolDefinition } from "jsr:@marianmeres/mcp-server/types";
-import { getRandomHumanReadable, getRandomParagraph } from "./src/index.ts";
+import {
+	getRandomHumanReadable,
+	getRandomParagraph,
+} from "./src/random-human-readable.ts";
 
 export const tools: McpToolDefinition[] = [
 	{
