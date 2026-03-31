@@ -1,6 +1,6 @@
 {
   "name": "@marianmeres/random-human-readable",
-  "version": "1.8.2",
+  "version": "1.8.3",
   "exports": "./src/mod.ts",
   "tasks": {
     "test": "deno test",
