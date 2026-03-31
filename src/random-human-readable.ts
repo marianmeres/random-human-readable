@@ -90,9 +90,9 @@ const defaultOptions = {
  * nouns, syllables, digits, and special characters.
  * Returns a joined string by default, or an array of parts when `joinWith` is `false`.
  */
-export const getRandomHumanReadable = (
-	options: Partial<Options> = {},
-): string | string[] => {
+export const getRandomHumanReadable = <Input extends Partial<Options> = Partial<Options>, Output = Input["joinWith"] extends string | undefined ? string : string[]>(
+	options?: Input,
+): Output => {
 	const {
 		adjCount,
 		colorsCount,
@@ -132,9 +132,11 @@ export const getRandomHumanReadable = (
 		out.push(s.join(""));
 	}
 
-	options.randomizeCase && (out = out.map(randomizeCase));
+	options?.randomizeCase && (out = out.map(randomizeCase));
 
-	return joinWith !== false ? out.join(joinWith) : out;
+	const shouldJoinString = typeof joinWith === "string";
+
+	return (shouldJoinString ? out.join(joinWith) : out) as Output;
 };
 
 /** Generates a random sentence using human-readable word combinations. */
