@@ -90,7 +90,7 @@ const defaultOptions = {
  * nouns, syllables, digits, and special characters.
  * Returns a joined string by default, or an array of parts when `joinWith` is `false`.
  */
-export const getRandomHumanReadable = <Input extends Partial<Options> = Partial<Options>, Output = Input["joinWith"] extends string ? string : string[]>(
+export const getRandomHumanReadable = <Input extends Partial<Options> = Partial<Options>, Output = Input["joinWith"] extends string | undefined ? string : string[]>(
 	options?: Input,
 ): Output => {
 	const {
