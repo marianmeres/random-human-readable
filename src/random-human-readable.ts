@@ -58,7 +58,7 @@ export const getRandomSpecialChar = (): string =>
 export const randomizeCase = (str: string): string =>
 	str
 		.split("")
-		.map((c) => Math.random() >= 0.5 ? c.toLowerCase() : c.toUpperCase())
+		.map((c) => (Math.random() >= 0.5 ? c.toLowerCase() : c.toUpperCase()))
 		.join("");
 
 // main api - all in one
@@ -90,7 +90,10 @@ const defaultOptions = {
  * nouns, syllables, digits, and special characters.
  * Returns a joined string by default, or an array of parts when `joinWith` is `false`.
  */
-export const getRandomHumanReadable = <Input extends Partial<Options> = Partial<Options>, Output = Input["joinWith"] extends string | undefined ? string : string[]>(
+export const getRandomHumanReadable = <
+	Input extends Partial<Options> = Partial<Options>,
+	Output = Input["joinWith"] extends string | undefined ? string : string[],
+>(
 	options?: Input,
 ): Output => {
 	const {
@@ -162,8 +165,9 @@ export const getRandomSentence = (
 	//
 	return Math.random() < shorterSentenceProbability * 1
 		? ucf(rhr() + ".")
-		: [ucf(rhr()), getRandomArrayItem([" and ", " or "]), rhr(), "."]
-			.join("");
+		: [ucf(rhr()), getRandomArrayItem([" and ", " or "]), rhr(), "."].join(
+				"",
+			);
 };
 
 /** Generates a random paragraph of sentences (lorem ipsum alternative). */
@@ -176,12 +180,8 @@ export const getRandomParagraph = (
 	const min = Math.abs(minSentences);
 	const max = Math.abs(maxSentences);
 	const n = getRandomInt(Math.min(min, max), Math.max(min, max));
-	times(
-		n,
-		() =>
-			out.push(
-				getRandomSentence([], shorterSentenceProbability * 1),
-			),
+	times(n, () =>
+		out.push(getRandomSentence([], shorterSentenceProbability * 1)),
 	);
 	return out.join(" ");
 };
