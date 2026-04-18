@@ -10,7 +10,7 @@ export const tools: McpToolDefinition[] = [
 		name: "generate-random-human-readable",
 		description:
 			"Generate random human-readable strings from combinable word lists " +
-			"(~1500 nouns, ~250 adjectives, ~130 colors) with configurable counts, " +
+			"(~1450 nouns, ~240 adjectives, ~130 colors) with configurable counts, " +
 			"separator, casing, digits, and special characters",
 		params: {
 			adjCount: z.number().optional().describe("Number of adjectives (default: 1)"),
@@ -86,8 +86,7 @@ export const tools: McpToolDefinition[] = [
 	},
 	{
 		name: "generate-random-paragraph",
-		description:
-			"Generate random placeholder paragraphs using human-readable word " +
+		description: "Generate random placeholder paragraphs using human-readable word " +
 			"combinations (alternative to lorem ipsum)",
 		params: {
 			minSentences: z

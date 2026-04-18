@@ -17,7 +17,6 @@ export const nouns = [
 	"importance",
 	"foundation",
 	"collection",
-	"collection",
 	"depression",
 	"percentage",
 	"connection",
