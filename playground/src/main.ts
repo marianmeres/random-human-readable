@@ -25,7 +25,7 @@ import {
 	refs,
 } from "@marianmeres/vanilla";
 import { getRandomHumanReadable, type Options } from "../../src/mod.ts";
-import { VERSION } from "./version.ts";
+import { VERSION } from "./version.generated.ts";
 
 /* ---- Config --------------------------------------------------------------- */
 

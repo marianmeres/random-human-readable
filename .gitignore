@@ -4,4 +4,5 @@ node_modules/
 .npm-dist
 tmp/*
 playground/dist/
+playground/src/version.generated.ts
 
