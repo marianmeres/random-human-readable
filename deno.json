@@ -15,10 +15,10 @@
     "playground:dev": "deno run -A jsr:@marianmeres/deno-build --outdir playground/dist --watch"
   },
   "imports": {
-    "@marianmeres/npmbuild": "jsr:@marianmeres/npmbuild@^1.14.0",
+    "@marianmeres/npmbuild": "jsr:@marianmeres/npmbuild@^1.16.0",
     "@std/assert": "jsr:@std/assert@^1.0.19",
-    "@std/fs": "jsr:@std/fs@^1.0.23",
-    "@std/path": "jsr:@std/path@^1.1.4"
+    "@std/fs": "jsr:@std/fs@^1.0.24",
+    "@std/path": "jsr:@std/path@^1.1.5"
   },
   "fmt": {
     "useTabs": true,
