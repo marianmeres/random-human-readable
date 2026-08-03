@@ -4,6 +4,7 @@
     "jsr:@marianmeres/design-tokens@^1.8.0": "1.8.0",
     "jsr:@marianmeres/mcp-server@*": "1.1.2",
     "jsr:@marianmeres/npmbuild@^1.16.0": "1.16.0",
+    "jsr:@marianmeres/release@*": "2.0.0",
     "jsr:@marianmeres/vanilla@*": "1.1.1",
     "jsr:@marianmeres/vanilla@^1.1.1": "1.1.1",
     "jsr:@std/assert@^1.0.19": "1.0.19",
@@ -34,6 +35,9 @@
         "jsr:@std/fs@^1.0.23",
         "jsr:@std/path@^1.1.4"
       ]
+    },
+    "@marianmeres/release@2.0.0": {
+      "integrity": "a0358067f8500edaa795f22f6f962765a7f20edd6d8869c0793f11ee02fb47c0"
     },
     "@marianmeres/vanilla@1.1.1": {
       "integrity": "806b8e9d16d60407792caaa4073a0f97c3d4fcdc58a70f46833ed8ac580a1a77"
