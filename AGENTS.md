@@ -58,6 +58,7 @@ interface Options {
 	digitsCount: number; // default: 0
 	specialCharsCount: number; // default: 0
 	randomizeCase: boolean; // default: false
+	capitalize: boolean; // default: false (first letter of each part; applied after randomizeCase)
 	joinWith: string | false; // default: "-"
 }
 ```

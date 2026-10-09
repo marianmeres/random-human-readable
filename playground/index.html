@@ -149,12 +149,17 @@
 				gap: 1rem;
 				margin-bottom: 1.25rem;
 			}
+			.switches {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0 1.25rem;
+			}
 			.switch {
 				display: inline-flex;
 				align-items: center;
 				gap: 0.5rem;
 				min-height: 2.75rem;
-				font-size: 0.85rem;
+				font-size: 0.875rem;
 				cursor: pointer;
 				user-select: none;
 			}
@@ -294,14 +299,24 @@
 				></section>
 
 				<div class="actions">
-					<label class="switch">
-						<input
-							type="checkbox"
-							data-ref="randomizeCase"
-							data-on="change:toggleCase"
-						/>
-						<span>randomize case</span>
-					</label>
+					<div class="switches">
+						<label class="switch">
+							<input
+								type="checkbox"
+								data-ref="randomizeCase"
+								data-on="change:setFlag"
+							/>
+							<span>randomize case</span>
+						</label>
+						<label class="switch">
+							<input
+								type="checkbox"
+								data-ref="capitalize"
+								data-on="change:setFlag"
+							/>
+							<span>capitalize words</span>
+						</label>
+					</div>
 					<button type="button" class="btn" data-on="click:refresh">
 						Refresh
 					</button>

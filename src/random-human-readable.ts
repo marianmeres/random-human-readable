@@ -35,6 +35,8 @@ const times = (n: number, cb: () => void) => {
 	while (n-- > 0) cb();
 };
 
+const ucf = (s: string): string => s.charAt(0).toUpperCase() + s.slice(1);
+
 /** Options for `getRandomHumanReadable`. */
 export interface Options {
 	adjCount: number;
@@ -42,6 +44,7 @@ export interface Options {
 	nounsCount: number;
 	syllablesCount: number;
 	randomizeCase: boolean;
+	capitalize: boolean;
 	digitsCount: number;
 	specialCharsCount: number;
 	joinWith: string | false;
@@ -55,6 +58,7 @@ const defaultOptions: Options = {
 	digitsCount: 0,
 	specialCharsCount: 0,
 	randomizeCase: false,
+	capitalize: false,
 	joinWith: "-",
 };
 
@@ -165,6 +169,7 @@ export const createGenerator = (opts: GeneratorOptions = {}): Generator => {
 			digitsCount,
 			specialCharsCount,
 			randomizeCase: shouldRandomizeCase,
+			capitalize,
 			joinWith,
 		} = merged as unknown as Options;
 
@@ -206,6 +211,8 @@ export const createGenerator = (opts: GeneratorOptions = {}): Generator => {
 		}
 
 		if (shouldRandomizeCase) out = out.map(randomizeCase);
+		// applied last, so it holds even when combined with randomizeCase
+		if (capitalize) out = out.map(ucf);
 
 		return (joinWith === false ? out : out.join(joinWith)) as Output;
 	};
@@ -222,7 +229,6 @@ export const createGenerator = (opts: GeneratorOptions = {}): Generator => {
 				{ adjCount: 1, colorsCount: 0, nounsCount: 1 },
 			];
 		}
-		const ucf = (s: string) => s[0].toUpperCase() + s.slice(1);
 		const rhr = (): string =>
 			getRandomHumanReadable({
 				...getRandomArrayItem(rhrOptions),

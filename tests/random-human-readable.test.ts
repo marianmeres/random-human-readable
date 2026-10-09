@@ -44,6 +44,7 @@ const none = {
 	digitsCount: 0,
 	specialCharsCount: 0,
 	randomizeCase: false,
+	capitalize: false,
 	joinWith: "" as string | false,
 };
 
@@ -129,6 +130,74 @@ Deno.test("randomizeCase option mixes case in the output", () => {
 		if (/[a-z]/.test(s) && /[A-Z]/.test(s)) mixed = true;
 	});
 	assert(mixed, "expected at least one mixed-case output across 20 trials");
+});
+
+Deno.test("capitalize option uppercases the first letter of each part", () => {
+	const g = createGenerator({
+		adjs: ["alpha"],
+		colors: ["red"],
+		nouns: ["thing"],
+	});
+	assertEquals(
+		g.getRandomHumanReadable({ capitalize: true }),
+		"Alpha-Red-Thing-Thing",
+	);
+	assertEquals(
+		g.getRandomHumanReadable({ capitalize: true, joinWith: "" }),
+		"AlphaRedThingThing",
+	);
+	assertEquals(g.getRandomHumanReadable({ capitalize: true, joinWith: false }), [
+		"Alpha",
+		"Red",
+		"Thing",
+		"Thing",
+	]);
+	// off by default
+	assertEquals(g.getRandomHumanReadable(), "alpha-red-thing-thing");
+});
+
+Deno.test("capitalize option treats the syllables segment as one word", () => {
+	times(20, () => {
+		const s = getRandomHumanReadable({
+			...none,
+			syllablesCount: 4,
+			digitsCount: 2,
+			capitalize: true,
+			joinWith: "-",
+		}) as string;
+		assert(/^[A-Z][a-z]{7}-\d{2}$/.test(s), `Unexpected '${s}'`);
+	});
+});
+
+Deno.test("capitalize wins the first letter when combined with randomizeCase", () => {
+	let mixed = false;
+	times(20, () => {
+		const parts = getRandomHumanReadable({
+			...none,
+			adjCount: 3,
+			randomizeCase: true,
+			capitalize: true,
+			joinWith: false,
+		}) as string[];
+		for (const p of parts) assert(/^[A-Z]/.test(p), `Unexpected '${p}'`);
+		if (parts.some((p) => /[a-z]/.test(p) && /[A-Z]/.test(p.slice(1)))) mixed = true;
+	});
+	assert(mixed, "expected the rest of some word to still be random-cased");
+});
+
+Deno.test("capitalize tolerates empty words in custom lists", () => {
+	const g = createGenerator({ adjs: [""] });
+	assertEquals(
+		g.getRandomHumanReadable({
+			...none,
+			adjCount: 2,
+			capitalize: true,
+			joinWith: "-",
+		}),
+		"-",
+	);
+	// the sentence helper shares the same first-letter helper
+	assertEquals(g.getRandomSentence([{ ...none, adjCount: 1 }], 0).endsWith("."), true);
 });
 
 Deno.test("joinWith: false returns array; joinWith: undefined uses default", () => {

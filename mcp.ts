@@ -35,6 +35,10 @@ export const tools: McpToolDefinition[] = [
 				.boolean()
 				.optional()
 				.describe("Randomize letter casing (default: false)"),
+			capitalize: z
+				.boolean()
+				.optional()
+				.describe("Uppercase the first letter of each word (default: false)"),
 			joinWith: z
 				.string()
 				.optional()
@@ -53,6 +57,7 @@ export const tools: McpToolDefinition[] = [
 				digitsCount,
 				specialCharsCount,
 				randomizeCase,
+				capitalize,
 				joinWith,
 				count,
 			} = params as {
@@ -63,6 +68,7 @@ export const tools: McpToolDefinition[] = [
 				digitsCount?: number;
 				specialCharsCount?: number;
 				randomizeCase?: boolean;
+				capitalize?: boolean;
 				joinWith?: string;
 				count?: number;
 			};
@@ -74,6 +80,7 @@ export const tools: McpToolDefinition[] = [
 				...(digitsCount !== undefined && { digitsCount }),
 				...(specialCharsCount !== undefined && { specialCharsCount }),
 				...(randomizeCase !== undefined && { randomizeCase }),
+				...(capitalize !== undefined && { capitalize }),
 				...(joinWith !== undefined && { joinWith }),
 			};
 			const n = Math.min(Math.max(1, count ?? 1), 50);

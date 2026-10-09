@@ -70,13 +70,16 @@ const SLIDERS: SliderDef[] = [
 	},
 ];
 
+/** The boolean switches. Each key is also its checkbox's `data-ref`. */
+const FLAGS: (keyof Options)[] = ["randomizeCase", "capitalize"];
+
 const RESULT_COUNT = 10;
 /** Must match the literal in the anti-FOUC inline script in index.html. */
 const THEME_KEY = "rhr-playground-theme";
 
 /* ---- State (module-level: outlives any view) ------------------------------ */
 
-const initialOpts: Partial<Options> = { randomizeCase: true };
+const initialOpts: Partial<Options> = { randomizeCase: true, capitalize: false };
 for (const s of SLIDERS)
 	(initialOpts as Record<string, number>)[s.key] = s.value;
 
@@ -205,7 +208,7 @@ const app = createView((track) => {
 		r.controls.appendChild(ctl);
 	}
 
-	// One-directional sync: opts → DOM (value labels, slider positions, switch).
+	// One-directional sync: opts → DOM (value labels, slider positions, switches).
 	track(
 		reactTo([opts], () => {
 			const o = opts.get() as Record<string, number | boolean>;
@@ -214,7 +217,8 @@ const app = createView((track) => {
 				valueOf[def.key].textContent = v;
 				if (inputOf[def.key].value !== v) inputOf[def.key].value = v;
 			}
-			(r.randomizeCase as HTMLInputElement).checked = !!o.randomizeCase;
+			for (const key of FLAGS)
+				(r[key] as HTMLInputElement).checked = !!o[key];
 		}),
 	);
 
@@ -244,11 +248,10 @@ const app = createView((track) => {
 				if (v === (opts.get() as Record<string, number>)[key]) return; // no-op
 				opts.update((o) => ({ ...o, [key]: v }));
 			},
-			toggleCase: (_e, input) =>
-				opts.update((o) => ({
-					...o,
-					randomizeCase: (input as HTMLInputElement).checked,
-				})),
+			setFlag: (_e, input) => {
+				const { dataset, checked } = input as HTMLInputElement;
+				opts.update((o) => ({ ...o, [dataset.ref!]: checked }));
+			},
 			refresh: () => nonce.update((n) => n + 1),
 			toggleTheme: () => toggleTheme(),
 			copy: (_e, btn) => copy(btn),

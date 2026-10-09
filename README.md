@@ -42,6 +42,8 @@ getRandomHumanReadable({
 	syllablesCount: 0,
 	// if true, will RanDOmiZe case on generated output
 	randomizeCase: false,
+	// if true, will Uppercase The First Letter of each generated word
+	capitalize: false,
 	// string to join the generated words with
 	// (use explicit `false` to disable joining and return as array of words)
 	joinWith: "-",

@@ -17,6 +17,7 @@ syllables, digits, and special characters.
   - `digitsCount` (non-negative integer) — Number of random digits (joined as one segment). Default: `0`
   - `specialCharsCount` (non-negative integer) — Number of random special characters (joined as one segment). Default: `0`
   - `randomizeCase` (boolean) — Randomly upper/lowercase each character. Default: `false`
+  - `capitalize` (boolean) — Uppercase the first letter of each generated part. Applied after `randomizeCase`, so with both set every part starts uppercase and the rest stays random. Default: `false`
   - `joinWith` (string | false) — Separator string, or `false` to return array. Default: `"-"`
 
 All count options are validated: passing a negative, fractional, `NaN`, or non-finite value throws `TypeError`. Passing an invalid `joinWith` (anything other than a `string` or `false`) throws `TypeError`. Explicit `undefined` for any option falls back to the default.
@@ -34,6 +35,9 @@ getRandomHumanReadable({ adjCount: 0, colorsCount: 0, nounsCount: 3, joinWith: "
 
 getRandomHumanReadable({ joinWith: false });
 // => ["brave", "coral", "mountain", "river"]
+
+getRandomHumanReadable({ capitalize: true, joinWith: "" });
+// => "BraveCoralMountainRiver"
 ```
 
 ---
@@ -220,6 +224,7 @@ interface Options {
 	nounsCount: number;
 	syllablesCount: number;
 	randomizeCase: boolean;
+	capitalize: boolean;
 	digitsCount: number;
 	specialCharsCount: number;
 	joinWith: string | false;
