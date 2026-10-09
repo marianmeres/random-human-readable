@@ -3,6 +3,5 @@ node_modules/
 .DS_Store
 .npm-dist
 tmp/*
-playground/dist/
 playground/src/version.generated.ts
 
