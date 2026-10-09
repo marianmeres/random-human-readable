@@ -79,7 +79,7 @@ const THEME_KEY = "rhr-playground-theme";
 
 /* ---- State (module-level: outlives any view) ------------------------------ */
 
-const initialOpts: Partial<Options> = { randomizeCase: true, capitalize: false };
+const initialOpts: Partial<Options> = { randomizeCase: false, capitalize: true };
 for (const s of SLIDERS)
 	(initialOpts as Record<string, number>)[s.key] = s.value;
 
