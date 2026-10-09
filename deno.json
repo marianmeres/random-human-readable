@@ -17,12 +17,12 @@
     "playground:dev": "deno task playground:version && deno run -A jsr:@marianmeres/deno-build --root playground/src --entry main.ts --outdir playground/dist --watch --watch-dir src"
   },
   "imports": {
-    "@marianmeres/design-tokens": "jsr:@marianmeres/design-tokens@^1.8.0",
+    "@marianmeres/design-tokens": "jsr:@marianmeres/design-tokens@^1.20.0",
     "@marianmeres/npmbuild": "jsr:@marianmeres/npmbuild@^1.16.0",
-    "@marianmeres/vanilla": "jsr:@marianmeres/vanilla@^1.1.1",
+    "@marianmeres/vanilla": "jsr:@marianmeres/vanilla@^1.10.0",
     "@std/assert": "jsr:@std/assert@^1.0.19",
     "@std/fs": "jsr:@std/fs@^1.0.24",
-    "@std/path": "jsr:@std/path@^1.1.5"
+    "@std/path": "jsr:@std/path@^1.1.6"
   },
   "fmt": {
     "useTabs": true,
